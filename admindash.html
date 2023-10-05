@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Reset some default browser styles */
+        body, h1, h2, h3, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main container styling */
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f2f2f2;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 190px;
+            background-color: #800080; /* Purple color */
+            color: #fff;
+            padding: 20px;
+            position: fixed; /* Fixed position */
+            height: 100%; /* Full height */
+        }
+        
+
+        .sidebar h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* Content area styling */
+        .content {
+            flex: 1;
+            padding: 20px;
+            margin-left: 250px; /* Adjust this to match sidebar width */
+        }
+
+        /* Header styling */
+        .header {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Page content styling */
+        .page-content {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Dropdown menu styling */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #444;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h1>Admin Dashboard</h1>
+            <ul>
+                <li class="dropdown">
+                    <a href="#">
+                        <i class="fas fa-user"></i> Users
+                        <i class="fas fa-caret-down"></i> <!-- Dropdown indicator icon -->
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('teacher_registration') }}">Teacher Registration</a>
+                        <a href="#">Teachers List</a>
+                    </div>
+                </li>
+                <li><a href="#"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Header -->
+            <div class="header">
+                <h2>Welcome, Admin</h2>
+            </div>
+
+            <!-- Page Content -->
+            <div class="page-content">
+                <h2>Dashboard Overview</h2>
+                <p>This is the main content area of your admin dashboard. You can customize and add various sections and features here.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2023 Admin Dashboard
+    </div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Registration Form</title>
+    <style>
+        /* Styling for the form container */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to top, rgba(128, 0, 128, 0.5) 50%, rgba(128, 0, 128, 0.5) 50%);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white; /* White background color */
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(128, 0, 128, 0.5); /* Purple box shadow with 50% opacity */
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        /* Styling for form fields */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #008BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Teacher Registration</h2>
+        <form action="/teacher_registration" method="POST" id="registration-form">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+                <span id="name-error" class="error"></span> <!-- Display validation error here -->
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <span id="email-error" class="error"></span> <!-- Display validation error here -->
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <span id="password-error" class="error"></span> <!-- Display validation error here -->
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+                <span id="confirm_password-error" class="error"></span> <!-- Display validation error here -->
+            </div>
+            <div class="form-group">
+                <label for="id">Mob:</label>
+                <input type="text" id="id" name="id" required>
+                <span id="id-error" class="error"></span> <!-- Display validation error here -->
+            </div>
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <input type="text" id="department" name="department" required>
+                <span id="department-error" class="error"></span> <!-- Display validation error here -->
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Function to validate the Full Name field
+        function validateName() {
+            var nameInput = document.getElementById("name");
+            var nameError = document.getElementById("name-error");
+            var name = nameInput.value.trim();
+            if (name === "") {
+                nameError.textContent = "Full Name is required";
+                return false;
+            } else {
+                nameError.textContent = "";
+                return true;
+            }
+        }
+
+        // Function to validate the Email field
+        function validateEmail() {
+            var emailInput = document.getElementById("email");
+            var emailError = document.getElementById("email-error");
+            var email = emailInput.value.trim();
+            if (email === "") {
+                emailError.textContent = "Email is required";
+                return false;
+            } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+                emailError.textContent = "Invalid email format";
+                return false;
+            } else {
+                emailError.textContent = "";
+                return true;
+            }
+        }
+
+        // Function to validate the Password field
+        function validatePassword() {
+            var passwordInput = document.getElementById("password");
+            var passwordError = document.getElementById("password-error");
+            var password = passwordInput.value;
+            if (password === "") {
+                passwordError.textContent = "Password is required";
+                return false;
+            } else {
+                passwordError.textContent = "";
+                return true;
+            }
+        }
+
+        // Function to validate the Confirm Password field
+        function validateConfirmPassword() {
+            var confirmPasswordInput = document.getElementById("confirm_password");
+            var confirmPasswordError = document.getElementById("confirm_password-error");
+            var confirmPassword = confirmPasswordInput.value;
+            var passwordInput = document.getElementById("password");
+            var password = passwordInput.value;
+            if (confirmPassword === "") {
+                confirmPasswordError.textContent = "Confirm Password is required";
+                return false;
+            } else if (confirmPassword !== password) {
+                confirmPasswordError.textContent = "Passwords do not match";
+                return false;
+            } else {
+                confirmPasswordError.textContent = "";
+                return true;
+            }
+        }
+
+        // Function to validate the Mob field
+        function validateMob() {
+            var mobInput = document.getElementById("id");
+            var mobError = document.getElementById("id-error");
+            var mob = mobInput.value.trim();
+            if (mob === "") {
+                mobError.textContent = "Mob is required";
+                return false;
+            } else if (!/^\d{1,10}$/.test(mob)) {
+                mobError.textContent = "Invalid phone number. Please enter up to 12 digits with no characters.";
+                return false;
+            } else {
+                mobError.textContent = "";
+                return true;
+            }
+        }
+
+        // Function to validate the Department field
+                // Function to validate the Department field
+                function validateDepartment() {
+                    var departmentInput = document.getElementById("department");
+                    var departmentError = document.getElementById("department-error");
+                    var department = departmentInput.value.trim();
+                    if (department === "") {
+                        departmentError.textContent = "Department is required";
+                        return false;
+                    } else {
+                        departmentError.textContent = "";
+                        return true;
+                    }
+                }
+        
+                // Add event listeners for real-time validation on input change
+                document.getElementById("name").addEventListener("input", validateName);
+                document.getElementById("email").addEventListener("input", validateEmail);
+                document.getElementById("password").addEventListener("input", validatePassword);
+                document.getElementById("confirm_password").addEventListener("input", validateConfirmPassword);
+                document.getElementById("id").addEventListener("input", validateMob);
+                document.getElementById("department").addEventListener("input", validateDepartment);
+        
+                // Function to validate the entire form
+                function validateForm() {
+                    var isNameValid = validateName();
+                    var isEmailValid = validateEmail();
+                    var isPasswordValid = validatePassword();
+                    var isConfirmPasswordValid = validateConfirmPassword();
+                    var isMobValid = validateMob();
+                    var isDepartmentValid = validateDepartment();
+        
+                    // Return true if all fields are valid, otherwise return false
+                    return isNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid && isMobValid && isDepartmentValid;
+                }
+        
+                // Add form submission event listener
+                document.getElementById("registration-form").addEventListener("submit", function (e) {
+                    if (!validateForm()) {
+                        e.preventDefault(); // Prevent form submission if validation fails
+                    }
+                });
+            </script>
+        </body>
+        </html>
+        

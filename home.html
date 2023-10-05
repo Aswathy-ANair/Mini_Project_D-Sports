@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WEB PRAROZ</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <div class="main">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}">
+
+            </div>
+            
+            <ul>
+                <li class="active"><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="Announcements.html">Announcements</a></li>
+                <a href="{{ url_for('admin_login') }}" style="color: white;">Login</a>
+
+                
+
+
+                
+                
+            </ul>
+        </div>
+        <div class="title">
+            <h1>E-SPORTS</h1>
+        </div>
+        <div class="button">
+            <a href="#" class="btn">WATCH VIDEO</a>
+            <a href="#" class="btn">BASIC SKILLS</a>
+            <a href="#" class="btn">LEARN MORE</a>
+        </div>
+    </header>
+</body>
+</html>
