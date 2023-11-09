@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='images/win.jpg') }}"); /* Background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4; /* Background color for the entire page */
+        }
+        .header {
+            background-color: #ff6600;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        .profile-container {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 800px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: row;
+        }
+        .profile-details {
+            padding: 20px;
+            flex: 1;
+        }
+        .profile-picture {
+            max-width: 150px;
+            border-radius: 50%;
+            margin: 20px;
+        }
+        .profile-field {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        p {
+            margin: 10px 0;
+        }
+        strong {
+            font-weight: bold;
+        }
+        .profile-field:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        .profile-field:last-child {
+            border-bottom: none;
+        }
+        .profile-field:hover {
+            background-color: #e0e0e0;
+        }
+        .profile-field a {
+            text-decoration: none;
+            color: #3498db;
+        }
+        .edit-button {
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .edit-button:hover {
+            background-color: #ff9900;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>My Profile</h1>
+        <a href="{{ url_for('user_profile') }}" style="position: absolute; top: 20px; right: 20px; color: #fff; text-decoration: none;">User Profile</a>
+    </div>
+    </div>
+    <div class="profile-container">
+        <div class="profile-details">
+            <div class="profile-field">
+                <p><strong>Name:</strong> {{ profile.name }}</p>
+            </div>
+            <div class="profile-field">
+                <p><strong>Email:</strong> {{ profile.email }}</p>
+            </div>
+            <div class="profile-field">
+                <p><strong>Phone:</strong> {{ profile.phone }}</p>
+            </div>
+            <div class="profile-field">
+                <p><strong>Address:</strong> {{ profile.address }}</p>
+            </div>
+            <!-- Add more fields as needed -->
+            <a href="{{ url_for('edit_profile', username=profile.username) }}" class="edit-button">Edit Profile</a>
+        </div>
+        <img class="profile-picture" src="{{ url_for('static', filename='images/gallery3.jpg') }}" alt="Profile Picture">
+    </div>
+</body>
+</html>

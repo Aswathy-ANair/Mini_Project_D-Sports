@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Items</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffA500;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #e0e0e0;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px; /* Decreased width */
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        ul li a:hover {
+            color: #007bff;
+        }
+
+        ul li button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 3px 8px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        ul li button:hover {
+            background-color: #0056b3;
+        }
+
+        a.add-link {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 5px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        a.add-link:hover {
+            background-color: #0056b3;
+        }
+
+     
+    </style>
+</head>
+<body>
+    <h1>Event Details</h1>
+    <ul>
+        {% for item in items %}
+            <li>{{ item.key }} <a href="{{ url_for('edit1', item_id=item._id) }}">Edit</a> <form action="{{ url_for('delete', item_id=item._id) }}" method="post"><button type="submit">Delete</button></form></li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add') }}" class="add-link">Add Item</a>
+   
+</body>
+</html>
