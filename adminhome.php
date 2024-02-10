@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION["username"])) {
-    header("location:login.php");
+    header("location:c_login.php");
 }
 ?>
 
@@ -179,11 +179,15 @@ nav a:hover {
     </header>
 
     <nav>
-        <a href="#">Dashboard</a>
+    <div class="dropdown">
+    <button class="dropbtn">Dashboard</button>
+    <div class="dropdown-content">
 		
         <a href="registration.php">Manage Users</a>
         <a href="event.php">Event Add</a>
         <a href="view-calendar.php">Event Calendar</a>
+        </div>
+    </div>
 
         <div class="dropdown">
         <button class="dropbtn">Students</button>
